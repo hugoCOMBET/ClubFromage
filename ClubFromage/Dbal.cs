@@ -82,11 +82,13 @@ namespace ClubFromage
         }
         public void Insert(string query)
         {
+            string query2 = "INSERT INTO" + query ;
+            Console.WriteLine(query2);
             //open connection
             if (this.OpenConnection() == true)
             {
                 //create command and assign the query and connection from the constructor
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlCommand cmd = new MySqlCommand(query2, connection);
 
                 //Execute command
                 cmd.ExecuteNonQuery();

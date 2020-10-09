@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using Renci.SshNet.Security.Cryptography;
 using System;
+using System.Globalization;
 
 namespace ClubFromage
 {
@@ -8,16 +9,15 @@ namespace ClubFromage
     {
         static void Main(string[] args)
         {
-            DBConnect ClubFromage = new DBConnect();
-            //string requete = "INSERT into Pays (Id,nom) VALUES(1,'France')";
-            //string requete = "INSERT into Pays (Id,nom) VALUES(1,'Belgique')";
-            //string requete = "INSERT into Fromage (Id,PaysOrigine_id,nom,creation,image) VALUES(2,2,'saintAlbray','2020/09/09','aa')";
-            //string requete1 = "INSERT into Fromage (Id,PaysOrigine_id,nom,creation,image) VALUES(3,1,'Tomme','2020/09/01','bb')";
+            DBConnect ClubFromage = new DBConnect(); 
+            Dbal clubfromage = new Dbal();
+           
+            DAOpays undaoPays = new DAOpays(clubfromage);
+           
+            undaoPays.InsertByFile("D:\\hugoCOMBET\\visualStudio\\ClubFromage\\ClubFromage\\bin\\Debug\\pays.csv");
 
-            //ClubFromage.Insert(requete);
-            //string requete1 = "delete from fromage where Id=1";
-            string requete1 = "Update Fromage set Id=78 where Id=5";
-            ClubFromage.ExectQuery(requete1);
+            //String delete = "Pays";
+            //ClubFromage.Delete(delete);
         }
     }
 }
